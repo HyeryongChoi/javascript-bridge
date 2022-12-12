@@ -1,5 +1,5 @@
 const BridgeGame = require('../models/BridgeGame');
-const { printGameStart } = require('../views/OutputView');
+const { printGameStart, printError } = require('../views/OutputView');
 const { readBridgeSize } = require('../views/InputView');
 
 class BridgeGameController {
@@ -11,7 +11,12 @@ class BridgeGameController {
   }
 
   onReadBridgeSize(bridgeSize) {
-    //this.#bridgeGame = new BridgeGame(bridgeSize);
+    try {
+      this.#bridgeGame = new BridgeGame(bridgeSize);
+    } catch (err) {
+      printError(err.message);
+      readBridgeSize(this.onReadBridgeSize.bind(this));
+    }
   }
 }
 
