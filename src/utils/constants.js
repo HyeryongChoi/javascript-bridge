@@ -22,9 +22,16 @@ const BRIDGE = Object.freeze({
   maxSize: 20,
 });
 
+const GAME = Object.freeze({
+  correct: 'O',
+  wrong: 'X',
+  blank: ' ',
+});
+
 module.exports = {
   INPUT_MESSAGE,
   OUTPUT_MESSAGE,
   ERROR_MESSAGE,
   BRIDGE,
+  GAME,
 };
