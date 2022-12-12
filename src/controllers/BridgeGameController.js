@@ -21,7 +21,14 @@ class BridgeGameController {
     }
   }
 
-  onReadMoving(moving) {}
+  onReadMoving(moving) {
+    try {
+      this.#bridgeGame.move(moving);
+    } catch (err) {
+      printError(err.message);
+      readMoving(this.onReadMoving.bind(this));
+    }
+  }
 }
 
 module.exports = BridgeGameController;

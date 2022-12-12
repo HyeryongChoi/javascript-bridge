@@ -11,6 +11,11 @@ class InputValidator extends Validator {
       throw new Error(ERROR_MESSAGE.bridgeSize);
     }
   }
+
+  static validateMoving(moving) {
+    const isValidMoving = moving === BRIDGE.up || moving === BRIDGE.down;
+    if (!isValidMoving) throw new Error(ERROR_MESSAGE.moving);
+  }
 }
 
 module.exports = InputValidator;

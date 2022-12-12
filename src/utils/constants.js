@@ -9,12 +9,15 @@ const OUTPUT_MESSAGE = Object.freeze({
 });
 
 const ERROR_MESSAGE = Object.freeze({
-  bridgeSize: '[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.\n',
+  bridgeSize: '\n[ERROR] 다리 길이는 3부터 20 사이의 숫자여야 합니다.\n',
+  moving: '\n[ERROR] 이동할 칸은 U 또는 D를 입력하여야 합니다.\n',
 });
 
 const BRIDGE = Object.freeze({
   1: 'U',
   0: 'D',
+  up: 'U',
+  down: 'D',
   minSize: 3,
   maxSize: 20,
 });
