@@ -1,4 +1,5 @@
 const Bridge = require('./Bridge');
+const BridgeResult = require('./BridgeResult');
 const { validateBridgeSize, validateMoving } = require('../utils/InputValidator');
 const BridgeMaker = require('../BridgeMaker');
 const { generate } = require('../BridgeRandomNumberGenerator');
@@ -9,6 +10,7 @@ const { generate } = require('../BridgeRandomNumberGenerator');
 class BridgeGame {
   #bridge;
   #player = { movings: [] };
+  #bridgeResult = new BridgeResult();
 
   constructor(bridgeSize) {
     validateBridgeSize(bridgeSize);
@@ -24,6 +26,12 @@ class BridgeGame {
     validateMoving(moving);
     const canMove = this.#bridge.match(moving, this.#player.movings.length);
     if (canMove) this.#player.movings.push(moving);
+    this.#bridgeResult.mark(canMove, moving);
+    return canMove;
+  }
+
+  getResultMap() {
+    return this.#bridgeResult.getBridgeMap();
   }
 
   /**
