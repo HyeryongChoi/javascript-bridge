@@ -25,6 +25,10 @@ const OutputView = {
   printError(errorMessage) {
     Console.print(errorMessage);
   },
+
+  printNewLine() {
+    Console.print(OUTPUT_MESSAGE.newLine);
+  },
 };
 
 module.exports = OutputView;

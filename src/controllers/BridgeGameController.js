@@ -1,6 +1,6 @@
 const BridgeGame = require('../models/BridgeGame');
-const { printGameStart, printError } = require('../views/OutputView');
-const { readBridgeSize } = require('../views/InputView');
+const { readBridgeSize, readMoving } = require('../views/InputView');
+const { printGameStart, printError, printNewLine } = require('../views/OutputView');
 
 class BridgeGameController {
   #bridgeGame;
@@ -13,11 +13,15 @@ class BridgeGameController {
   onReadBridgeSize(bridgeSize) {
     try {
       this.#bridgeGame = new BridgeGame(bridgeSize);
+      printNewLine();
+      readMoving(this.onReadMoving.bind(this));
     } catch (err) {
       printError(err.message);
       readBridgeSize(this.onReadBridgeSize.bind(this));
     }
   }
+
+  onReadMoving(moving) {}
 }
 
 module.exports = BridgeGameController;
