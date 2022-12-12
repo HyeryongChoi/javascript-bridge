@@ -22,7 +22,8 @@ class BridgeGame {
    */
   move(moving) {
     validateMoving(moving);
-    this.#player.movings.push(moving);
+    const canMove = this.#bridge.match(moving, this.#player.movings.length);
+    if (canMove) this.#player.movings.push(moving);
   }
 
   /**
