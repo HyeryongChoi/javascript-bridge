@@ -39,7 +39,7 @@ class BridgeGameController {
   }
 
   handleMoveOrSuccess() {
-    //if (this.#bridgeGame.isSuccess()) return printResult(true, this.#bridgeGame.getResultMap(), 1);
+    if (this.#bridgeGame.isSuccess()) return printResult(true, this.#bridgeGame.getResultMap(), 1);
     readMoving(this.onReadMoving.bind(this));
   }
 }
