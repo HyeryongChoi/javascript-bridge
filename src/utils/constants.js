@@ -26,8 +26,8 @@ const INPUT_MESSAGE = Object.freeze({
 const OUTPUT_MESSAGE = Object.freeze({
   newLine: '',
   gameStart: '다리 건너기 게임을 시작합니다.\n',
-  gameQuit: '\n최종 게임 결과',
-  gameResult: (result) => `\n게임 성공 여부: ${result}`,
+  gameQuit: '최종 게임 결과',
+  gameResult: (result) => `게임 성공 여부: ${result}`,
   gameTryCount: (tryCount) => `총 시도한 횟수: ${tryCount}`,
 });
 

@@ -31,6 +31,7 @@ const OutputView = {
     OutputView.printMap(bridgeMap);
     Console.print(OUTPUT_MESSAGE.gameResult(result));
     Console.print(OUTPUT_MESSAGE.gameTryCount(tryCount));
+    Console.close();
   },
 
   printError(errorMessage) {

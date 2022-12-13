@@ -60,9 +60,10 @@ class BridgeGameController {
   handleRetryOrQuit(gameCommand) {
     if (gameCommand === GAME.retry) {
       this.#bridgeGame.retry();
-      readMoving(this.onReadMoving.bind(this));
+      return readMoving(this.onReadMoving.bind(this));
     }
     if (gameCommand === GAME.quit) {
+      printResult(false, this.#bridgeGame.getResultMap(), this.#bridgeGame.getTryCount());
     }
   }
 }
