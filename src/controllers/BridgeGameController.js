@@ -8,6 +8,7 @@ const {
   printNewLine,
 } = require('../views/OutputView');
 const { validateGameCommand } = require('../utils/InputValidator');
+const { GAME } = require('../utils/constants');
 
 class BridgeGameController {
   #bridgeGame;
@@ -41,7 +42,8 @@ class BridgeGameController {
   }
 
   handleMoveOrSuccess() {
-    if (this.#bridgeGame.isSuccess()) return printResult(true, this.#bridgeGame.getResultMap(), 1);
+    if (this.#bridgeGame.isSuccess())
+      return printResult(true, this.#bridgeGame.getResultMap(), this.#bridgeGame.getTryCount());
     readMoving(this.onReadMoving.bind(this));
   }
 
@@ -55,7 +57,14 @@ class BridgeGameController {
     }
   }
 
-  handleRetryOrQuit(gameCommand) {}
+  handleRetryOrQuit(gameCommand) {
+    if (gameCommand === GAME.retry) {
+      this.#bridgeGame.retry();
+      readMoving(this.onReadMoving.bind(this));
+    }
+    if (gameCommand === GAME.quit) {
+    }
+  }
 }
 
 module.exports = BridgeGameController;

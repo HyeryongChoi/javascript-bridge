@@ -11,6 +11,7 @@ class BridgeGame {
   #bridge;
   #player = { movings: [] };
   #bridgeResult = new BridgeResult();
+  #tryCount = 1;
 
   constructor(bridgeSize) {
     validateBridgeSize(bridgeSize);
@@ -44,7 +45,15 @@ class BridgeGame {
    * <p>
    * 재시작을 위해 필요한 메서드의 반환 값(return value), 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
    */
-  retry() {}
+  retry() {
+    this.#player = { movings: [] };
+    this.#bridgeResult = new BridgeResult();
+    this.#tryCount += 1;
+  }
+
+  getTryCount() {
+    return this.#tryCount;
+  }
 }
 
 module.exports = BridgeGame;
