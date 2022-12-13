@@ -9,6 +9,10 @@ class Bridge {
     if (this.#pattern[curIndex] === moving) return true;
     return false;
   }
+
+  getSize() {
+    return this.#pattern.length;
+  }
 }
 
 module.exports = Bridge;

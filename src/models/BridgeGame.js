@@ -34,6 +34,11 @@ class BridgeGame {
     return this.#bridgeResult.getBridgeMap();
   }
 
+  isSuccess() {
+    const bridgeSize = this.#bridge.getSize();
+    return this.#bridgeResult.canCrossOver(bridgeSize);
+  }
+
   /**
    * 사용자가 게임을 다시 시도할 때 사용하는 메서드
    * <p>

@@ -10,6 +10,17 @@ class BridgeResult {
     this.#bridgeMap[notMoving].push(GAME.blank);
   }
 
+  canCrossOver(bridgeSize) {
+    if (
+      bridgeSize === this.#bridgeMap[BRIDGE.up].length &&
+      this.#bridgeMap[BRIDGE.up][bridgeSize - 1] !== GAME.wrong &&
+      this.#bridgeMap[BRIDGE.down][bridgeSize - 1] !== GAME.wrong
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   getBridgeMap() {
     return Object.freeze(this.#bridgeMap);
   }
