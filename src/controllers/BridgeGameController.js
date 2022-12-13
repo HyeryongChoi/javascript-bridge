@@ -1,5 +1,5 @@
 const BridgeGame = require('../models/BridgeGame');
-const { readBridgeSize, readMoving } = require('../views/InputView');
+const { readBridgeSize, readMoving, readGameCommand } = require('../views/InputView');
 const {
   printGameStart,
   printMap,
@@ -32,6 +32,7 @@ class BridgeGameController {
       const canMove = this.#bridgeGame.move(moving);
       printMap(this.#bridgeGame.getResultMap());
       if (canMove) this.handleMoveOrSuccess();
+      if (!canMove) readGameCommand(this.onReadGameCommand.bind(this));
     } catch (err) {
       printError(err.message);
       readMoving(this.onReadMoving.bind(this));
@@ -42,6 +43,8 @@ class BridgeGameController {
     if (this.#bridgeGame.isSuccess()) return printResult(true, this.#bridgeGame.getResultMap(), 1);
     readMoving(this.onReadMoving.bind(this));
   }
+
+  onReadGameCommand(gameCommand) {}
 }
 
 module.exports = BridgeGameController;
