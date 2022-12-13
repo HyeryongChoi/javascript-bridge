@@ -7,6 +7,7 @@ const {
   printError,
   printNewLine,
 } = require('../views/OutputView');
+const { validateGameCommand } = require('../utils/InputValidator');
 
 class BridgeGameController {
   #bridgeGame;
@@ -44,7 +45,17 @@ class BridgeGameController {
     readMoving(this.onReadMoving.bind(this));
   }
 
-  onReadGameCommand(gameCommand) {}
+  onReadGameCommand(gameCommand) {
+    try {
+      validateGameCommand(gameCommand);
+      this.handleRetryOrQuit(gameCommand);
+    } catch (err) {
+      printError(err.message);
+      readGameCommand(this.onReadGameCommand.bind(this));
+    }
+  }
+
+  handleRetryOrQuit(gameCommand) {}
 }
 
 module.exports = BridgeGameController;

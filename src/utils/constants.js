@@ -34,6 +34,7 @@ const OUTPUT_MESSAGE = Object.freeze({
 const ERROR_MESSAGE = Object.freeze({
   bridgeSize: `\n[ERROR] 다리 길이는 ${BRIDGE.minSize}부터 ${BRIDGE.maxSize} 사이의 숫자여야 합니다.\n`,
   moving: `\n[ERROR] 이동할 칸은 ${BRIDGE.up} 또는 ${BRIDGE.down}를 입력하여야 합니다.\n`,
+  gameCommand: `\n[ERROR] 게임 명령어는 ${GAME.retry} 또는 ${GAME.quit}를 입력하여야 합니다.\n`,
 });
 
 module.exports = {

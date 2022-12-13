@@ -1,5 +1,5 @@
 const Validator = require('./Validator');
-const { ERROR_MESSAGE, BRIDGE } = require('./constants');
+const { BRIDGE, GAME, ERROR_MESSAGE } = require('./constants');
 
 class InputValidator extends Validator {
   static validateBridgeSize(size) {
@@ -15,6 +15,11 @@ class InputValidator extends Validator {
   static validateMoving(moving) {
     const isValidMoving = moving === BRIDGE.up || moving === BRIDGE.down;
     if (!isValidMoving) throw new Error(ERROR_MESSAGE.moving);
+  }
+
+  static validateGameCommand(gameCommand) {
+    const isValidGameCommand = gameCommand === GAME.retry || gameCommand === GAME.quit;
+    if (!isValidGameCommand) throw new Error(ERROR_MESSAGE.gameCommand);
   }
 }
 
